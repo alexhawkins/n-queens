@@ -22,7 +22,7 @@ window.findNRooksSolution = function(n) {
   //in a different row, and not in the same column.
 
   //create a function to check the rows. This is the function that we would initially call and it would 
-  //recurse through all the rows until it ran through all it’s options
+  //recurse through all the rows until it ran through all options
   var solution = [];
   for (var i = 0; i < n; i++) {
     solution.push(board.attributes[i]);
@@ -31,9 +31,11 @@ window.findNRooksSolution = function(n) {
   var searchRow = function(row, col) {
     // place rook on board at row, col, start at pos (0, 0)
     board.togglePiece(row, col);
-    //chek if rook is in danger zone(in an attackable position)
+    //check if rook is in danger zone(in an attackable position)
     if (board.hasAnyRooksConflicts()) {
       //if it is, remove rook from board using togglePiece method
+      //could also use board.attributes[row][col] = 1 to turn on and
+      //board.attributes[row][col] = 0 to turn off.
       board.togglePiece(row, col);
       //we want to to see if the next column is safe but we also
       //need to make sure we're not in the last column
