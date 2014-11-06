@@ -62,7 +62,7 @@ window.findNRooksSolution = function(n) {
 
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
-window.countNRooksSolutions = function(n) {
+window.countNRooksSolutions = _.memoize(function(n) {
   var board = new Board({ n: n });
   //set counter to 1 in situation where n = 1
   var solutionCounter = n === 0 ? 1 : 0;
@@ -91,7 +91,7 @@ window.countNRooksSolutions = function(n) {
   //start checking at position 0
   isItASolution(0);
   return solutionCounter;
-};
+});
 
 
 
